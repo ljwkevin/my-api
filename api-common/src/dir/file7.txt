@@ -1,0 +1,173 @@
+
+10、让Activity变成一个窗口：Activity属性设定 
+
+　　讲点轻松的吧,可能有人希望做出来的应用程序是一个漂浮在手机主界面的东西，那么很 简单你只需要设置 一下Activity的主题就可以了在AndroidManifest.xml 中定义 Activity的 地方一句话： 
+
+　　Xml代码 
+
+　　1. android :theme="@android:style/Theme.Dialog" 
+
+　　这就使你的应用程序变成对话框的形式弹出来了，或者 
+
+　　Xml代码 
+
+　　1. android:theme="@android:style/Theme.Translucent" 
+
+　　就变成半透明的，[友情提示-.-]类似的这种activity的属性可以在android.R.styleable 类的AndroidManifestActivity 方法中看到，AndroidManifest.xml中所有元素的属性的介绍都可以参考这个类android.R.styleable 
+
+　　上面说的是属性名称，具体有什么值是在android.R.style中 可以看到，比如这个"@android:style/Theme.Dialog" 就对应于android.R.style.Theme_Dialog ,('_'换成'.' < --注意：这个是文章内容不是笑脸)就可以用在描述文件 中了,找找类定义和描述文件中的对应关系就都明白了。 
+
+11、 你后台的Activity被系统回收怎么办：onSaveInstanceState 
+
+　　当你的程序中某一个Activity A 在运行时中，主动或被动地运行另一个新的Activity B 　这个时候A会执行 
+
+　　Java代码 
+
+　　1. public 
+
+　　2. void onSaveInstanceState(Bundle outState) { 
+
+　　3. super.onSaveInstanceState(outState); 
+
+　　4. outState.putLong("id", 1234567890); 
+
+　　5. } 
+
+　　public 
+
+　　void onSaveInstanceState(Bundle outState) { 
+
+　　super.onSaveInstanceState(outState); 
+
+　　outState.putLong("id", 1234567890); 
+
+　　} 
+
+　　B 完成以后又会来找A, 这个时候就有两种情况，一种是A被回收，一种是没有被回收，被回 收的A就要重新调用onCreate()方法，不同于直接启动的是这回onCreate()里是带上参数 savedInstanceState，没被收回的就还是onResume就好了。 
+
+　　savedInstanceState是一个Bundle对象，你基本上可以把他理解为系统帮你维护的一个Map对象。在onCreate()里你可能会用到它，如果正常启动onCreate就不会有它，所以用的时候要判断一下是否为空。 
+
+　　Java代码 
+
+　　1. if(savedInstanceState != null){ 
+
+　　2. long id = savedInstanceState.getLong("id"); 
+
+　　3. } 
+
+　　if(savedInstanceState != null){ 
+
+　　long id = savedInstanceState.getLong("id"); 
+
+　　} 
+
+　　就像官方的Notepad教程 里的情况，你正在编辑某一个note，突然被中断，那么就把这个note的id记住，再起来的时候就可以根据这个id去把那个note取出来，程序就完整一些。这也是看你的应用需不需要保存什么，比如你的界面就是读取一个列表，那就不需要特殊记住什么，哦， 没准你需要记住滚动条的位置... 
+
+12、 调用与被调用：我们的通信使者Intent 
+
+　　要说Intent了，Intent就是这个这个意图 ，应用程序间Intent进行交流，打个电话啦，来个 电话啦都会发Intent, 这个是Android架构的松耦合的精髓部分，大大提高了组件的复用性，比如你要在你的应用程序中点击按钮，给某人打电话，很简单啊，看下代码先： 
+
+　　Java代码 
+
+　　1. Intent intent = new Intent(); 
+
+　　2. intent.setAction(Intent.ACTION_CALL); 
+
+　　3. intent.setData(Uri.parse("tel:" + number)); 
+
+4. startActivity(intent); 
+
+　　Intent intent = new Intent(); 
+
+　　intent.setAction(Intent.ACTION_CALL); 
+
+　　intent.setData(Uri.parse("tel:" + number)); 
+
+　　startActivity(intent); 
+
+　　扔出这样一个意图，系统看到了你的意图就唤醒了电话拨号程序，打出来电话。什么读联系人，发短信啊，邮件啊，统统只需要扔出intent就好了，这个部分设计 地确实很好啊。 
+
+　　那Intent通过什么来告诉系统需要谁来接受他呢? 
+
+　　通常使用Intent有两种方法，第一种是直接说明需要哪一个类来接收代码如下: 
+
+　　Java代码 
+
+　　1. Intent intent = new Intent(this, MyActivity.class); 
+
+　　2. intent.getExtras().putString("id", "1"); 
+
+　　3. tartActivity(intent); 
+
+　　Intent intent = new Intent(this, MyActivity.class); 
+
+　　intent.getExtras().putString("id", "1"); 
+
+　　tartActivity(intent); 
+
+　　第一种方式很明显，直接指定了MyActivity为接受者,并且传了一些数据给MyActivity，在MyActivity里可以用getIntent()来的到这个intent和数据。 
+
+　　第二种就需要先看一下AndroidMenifest中的intentfilter的配置了 
+
+　　Xml代码 
+
+　　< intent-filter> 
+
+　　< action 
+
+　　android:name="android.intent.action.VIEW" 
+
+　　/> 
+
+　　< action 
+
+　　android:value="android.intent.action.EDIT" 
+
+　　/> 
+
+　　< action 
+
+　　android:value="android.intent.action.PICK" 
+
+　　/> 
+
+　　< category 
+
+　　android:name="android.intent.category.DEFAULT" 
+
+　　/> 
+
+　　< data 
+
+　　android:mimeType="vnd.android.cursor.dir/vnd.google.note" 
+
+　　/> 
+
+　　< /intent-filter> 
+
+　　这里面配置用到了action, data, category这些东西，那么聪明的你一定想到intent里也会有这些东西，然后一匹配不就找到接收者了吗? 
+
+　　action其实就是一个意图的字符串名称。 
+
+　　上面这段intent-filter的配置文件说明了这个Activity可以接受不同的Action，当然相应的程序逻辑也不一样咯,提一下那个 mimeType,他是在ContentProvider里定义的，你要是自己实现一个ContentProvider就知道了，必须指定 
+mimeType才能让数据被别人使用。 
+
+　　不知道原理说明白没，总结一句，就是你调用别的界面不是直接new那个界面，而是通过扔出一个intent，让系统帮你去调用那个界面，这样就多么松藕合啊，而且符合了生命周期被系统管理的原则。 
+
+　　想知道category都有啥，Android为你预先定制好的action都有啥等等，请亲自访问官方链接Intent 
+
+　　ps:想知道怎么调用系统应用程序的同学，可以仔细看一下你的logcat，每次运行一个程序的时候是不是有一些信息比如: 
+
+　　Starting activity: Intent { action=android.intent.action.MAINcategories={android.intent.category.LAUNCHER} flags=0x10200000comp={com.android.camera/com.android.camera.GalleryPicker} } 
+
+　　再对照一下Intent的一些set方法，就知道怎么调用咯，希望你喜欢：) 
+
+　
+
+
+
+
+
+
+
+　　 
