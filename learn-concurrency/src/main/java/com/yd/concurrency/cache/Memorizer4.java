@@ -31,9 +31,9 @@ public class Memorizer4<A, V> implements Computable<A, V> {
                 }
             };
             FutureTask<V> ft = new FutureTask<V>(callable);
-            result = ft;
             result = cache.putIfAbsent(arg, ft);//缺少即加入 ,这里使用到了原子操作
             if (result == null) {
+                result = ft;
                 ft.run();
             }
         }

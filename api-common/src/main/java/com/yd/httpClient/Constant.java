@@ -21,6 +21,7 @@ public class Constant {
     static {
         Prop constants = null;
         try {
+            //该文件部分 需要设置传入 TODO
             constants = Proper.use("web-api.properties");
         } catch (Exception e) {
             System.out.println("读取配置文件错误" + e.toString());
