@@ -20,16 +20,15 @@ import org.springframework.stereotype.Service;
  */
 @Service("service.emailService")
 public class EmailServiceImp implements EmailService{
-    @Resource(name = "javaMailSender")
+    @Resource(name = "java163MailSender")
     private JavaMailSender javaMailSender;
 
     @Override
     public void sendEmail(String toAdress, String subject, String htmlText) {
         try{
             MimeMessage msg = javaMailSender.createMimeMessage();
-            MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true,"GBK");
+            MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true,"UTF-8");
 
-            msgHelper.setFrom("zyy6721322@163.com");
             msgHelper.setTo(toAdress);
             msgHelper.setSubject(subject);
             msgHelper.setText(htmlText,true);

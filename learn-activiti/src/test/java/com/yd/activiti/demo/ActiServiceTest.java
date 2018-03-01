@@ -1,8 +1,7 @@
-package com.yd.activiti.test;
+package com.yd.activiti.demo;
 
 import com.yd.activiti.BaseTest;
 import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;

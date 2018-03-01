@@ -1,4 +1,4 @@
-package com.yd.activiti.test.entity;
+package com.yd.activiti.demo.entity;
 
 import lombok.Data;
 

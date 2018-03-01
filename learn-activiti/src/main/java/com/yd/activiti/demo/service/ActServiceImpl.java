@@ -1,9 +1,7 @@
-package com.yd.activiti.test.service;
+package com.yd.activiti.demo.service;
 
-import com.yd.activiti.test.entity.ActivitiResultDto;
+import com.yd.activiti.demo.entity.ActivitiResultDto;
 import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.ProcessEngineConfiguration;
-import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.task.Task;
 import org.springframework.stereotype.Service;
 
