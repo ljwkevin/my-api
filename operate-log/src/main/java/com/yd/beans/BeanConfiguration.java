@@ -36,7 +36,7 @@ public class BeanConfiguration {
         sender.setDefaultEncoding("Utf-8");
         Properties p = new Properties();
         p.setProperty("mail.smtp.timeout", "25000");
-        p.setProperty("mail.smtp.auth", "false");
+        p.setProperty("mail.smtp.auth", "true");
         sender.setJavaMailProperties(p);
         return sender;
 

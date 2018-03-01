@@ -13,18 +13,16 @@
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
     </context:component-scan>
 
-    <!--<import resource="classpath*:spring-formatter.xml"/>-->
-
     <!-- 加载应用属性实例，可通过  @Value("#{APP_PROP['jdbc.driver']}") String jdbcDriver 方式引用 -->
     <util:properties id="test" location="classpath:web-api.properties" local-override="true"/>
 
-    <util:properties id="configuration" location="classpath:configuration.properties" local-override="true"/>
+    <util:properties id="application" location="classpath:application.properties" local-override="true"/>
 
 
     <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>classpath:configuration.properties</value>
+                <value>classpath:application.properties</value>
             </list>
         </property>
     </bean>
