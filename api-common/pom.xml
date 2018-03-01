@@ -92,6 +92,10 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/lucene-core-2.4.1.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
     </dependencies>
 
 

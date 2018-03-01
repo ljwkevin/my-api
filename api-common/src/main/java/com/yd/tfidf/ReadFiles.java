@@ -46,7 +46,7 @@ public class ReadFiles {
 
     public static String readFiles(String file) throws FileNotFoundException, IOException {
         StringBuffer sb = new StringBuffer();
-        InputStreamReader is = new InputStreamReader(new FileInputStream(file), "gbk");
+        InputStreamReader is = new InputStreamReader(new FileInputStream(file), "utf-8");
         BufferedReader br = new BufferedReader(is);
         String line = br.readLine();
         while (line != null) {
