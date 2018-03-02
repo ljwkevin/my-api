@@ -24,7 +24,7 @@ public class ActServiceImpl implements ActService {
         if ("deploy".equals(command)) {
             Date date = new Date();
             String s = date.toString();
-            processEngine.getRepositoryService().createDeployment().name("百果园" + s).addClasspathResource("activiti/Leave.bpmn").deploy();
+            processEngine.getRepositoryService().createDeployment().name("百果园" + s).addClasspathResource("activiti/Leave.bpmn.xml").deploy();
         }
     }
 

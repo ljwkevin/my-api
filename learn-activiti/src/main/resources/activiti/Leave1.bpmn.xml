@@ -12,10 +12,10 @@
     <sequenceFlow id="_6" sourceRef="leadderNotify" targetRef="manageAudit"/>
     <exclusiveGateway gatewayDirection="Unspecified" id="_7" name="ExclusiveGateway"/>
     <sequenceFlow id="_8" name="判断天数是否大于2" sourceRef="manageAudit" targetRef="_7"/>
-    <serviceTask activiti:exclusive="true" activiti:type="mail" id="mailNotifyApprover" name="发�?�邮件告诉申请人成功">
+    <serviceTask activiti:exclusive="true" activiti:type="mail" id="mailNotifyApprover" name="发�?�邮件告诉申请人成功">
       <extensionElements>
         <activiti:field name="subject">
-          <activiti:string>你的假期也申请成�?</activiti:string>
+          <activiti:string>你的假期也申请成�?</activiti:string>
         </activiti:field>
         <activiti:field name="charset">
           <activiti:string>UTF-8</activiti:string>
@@ -33,10 +33,10 @@
     <sequenceFlow id="_16" name="天数大于2" sourceRef="_7" targetRef="_15">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{day>2}]]></conditionExpression>
     </sequenceFlow>
-    <serviceTask activiti:exclusive="true" activiti:type="mail" id="_17" name="发�?�邮件�?�知hr总监">
+    <serviceTask activiti:exclusive="true" activiti:type="mail" id="_17" name="发�?�邮件�?�知hr总监">
       <extensionElements>
         <activiti:field name="subject">
-          <activiti:string>你的假期也申请成�?</activiti:string>
+          <activiti:string>你的假期申请成�?</activiti:string>
         </activiti:field>
         <activiti:field name="charset">
           <activiti:string>UTF-8</activiti:string>

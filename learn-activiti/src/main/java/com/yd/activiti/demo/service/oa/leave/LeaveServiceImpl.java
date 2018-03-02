@@ -31,5 +31,6 @@ public class LeaveServiceImpl implements LeaveService {
             entity.setApplyTime(new Date());
         }
         leaveDao.save(entity);
+        System.out.println("entity:" + entity);
     }
 }

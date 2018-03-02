@@ -24,7 +24,7 @@ public class ActiServiceTest extends BaseTest {
         Deployment deployment = processEngine.getRepositoryService()
                 .createDeployment()
                 .name("1440aaa")
-                .addClasspathResource("activiti/aaa.bpmn")
+                .addClasspathResource("activiti/Leave.bpmn.xml")
                 .deploy();
         //发布前测试;重要的3张表 01`act_re_deployment`  02`act_re_procdef`   03`act_ru_task`
         System.out.println("###########");
