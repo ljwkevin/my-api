@@ -6,23 +6,9 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:component-scan base-package="org.activiti.conf,org.activiti.rest.editor,org.activiti.rest.service" />
     <!-- 单例json对象 -->
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
-
-    <!--数据源-->
-    <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="url" value="jdbc:mysql://139.199.168.194/activiti01"/>
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="username" value="root"/>
-        <property name="password" value="Pagoda@123"/>
-    </bean>
-
-    <!--事物管理器-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
-    <context:component-scan base-package="org.activiti.conf,org.activiti.rest.editor,org.activiti.rest.service" />
     <!--配置一个spring提供的对象-->
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
         <property name="dataSource" ref="dataSource"/>
