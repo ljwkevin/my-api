@@ -16,6 +16,7 @@
         <module>learn-akka</module>
         <module>learn-concurrency</module>
         <module>learn-jpa-activiti</module>
+        <module>learn-spring-mvc</module>
     </modules>
 
 

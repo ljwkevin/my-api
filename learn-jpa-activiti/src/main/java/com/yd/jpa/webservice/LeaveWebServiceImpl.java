@@ -12,7 +12,7 @@ import java.util.Date;
  * 请假WebService接口简单实现
  * @author: Henry Yan
  */
-@WebService(endpointInterface = "com.yd.activiti.demo.webservice.LeaveWebService", serviceName = "LeaveWebService")
+@WebService(endpointInterface = "com.yd.jpa.webservice.LeaveWebService", serviceName = "LeaveWebService")
 public class LeaveWebServiceImpl implements LeaveWebService {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
