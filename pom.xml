@@ -15,7 +15,7 @@
         <module>spring-security</module>
         <module>learn-akka</module>
         <module>learn-concurrency</module>
-        <module>learn-activiti</module>
+        <module>learn-jpa-activiti</module>
     </modules>
 
 
