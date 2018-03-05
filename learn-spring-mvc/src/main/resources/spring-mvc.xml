@@ -11,6 +11,8 @@
        default-autowire="byName">
 
     <context:component-scan base-package="com.yd" use-default-filters="true">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
     </context:component-scan>
     <!--释放静态资源-->
     <mvc:resources mapping="/doc/**" location="classpath:/doc/"/>

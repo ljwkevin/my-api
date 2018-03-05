@@ -1,4 +1,4 @@
-package com.springmvc.resolver;
+package com.yd.springmvc.resolver;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;

@@ -29,7 +29,7 @@
     </bean>
 
     <import resource="classpath*:spring-dao.xml"/>
-    <!--<import resource="classpath*:spring-activiti.xml"/>-->
+    <import resource="classpath*:spring-activiti.xml"/>
     <import resource="classpath*:spring-ws.xml"/>
 
 </beans>

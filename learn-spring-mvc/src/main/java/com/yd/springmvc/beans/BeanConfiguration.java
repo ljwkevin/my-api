@@ -1,4 +1,4 @@
-package com.springmvc.beans;
+package com.yd.springmvc.beans;
 
 import com.yd.common.util.format.DictionaryFormatter;
 import org.springframework.beans.factory.annotation.Value;

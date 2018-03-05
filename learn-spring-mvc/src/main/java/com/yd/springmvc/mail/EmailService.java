@@ -1,4 +1,4 @@
-package com.springmvc.mail;
+package com.yd.springmvc.mail;
 
 public interface EmailService {
 

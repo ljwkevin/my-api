@@ -1,4 +1,4 @@
-package com.springmvc.mail;
+package com.yd.springmvc.mail;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;

@@ -1,8 +1,8 @@
-package com.springmvc.controller;
+package com.yd.springmvc.controller;
 
 import com.yd.entity.Employee;
 import com.yd.entity.User;
-import com.springmvc.resolver.FormObj;
+import com.yd.springmvc.resolver.FormObj;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
