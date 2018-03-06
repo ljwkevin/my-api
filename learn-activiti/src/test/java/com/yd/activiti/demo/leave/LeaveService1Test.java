@@ -1,9 +1,9 @@
-package com.yd.jpa.activiti.leave;
+package com.yd.activiti.demo.leave;
 
-import com.yd.jpa.BaseTest;
-import com.yd.jpa.dao.oa.LeaveDao;
-import com.yd.jpa.entity.oa.Leave;
-import com.yd.jpa.service.oa.leave.LeaveService;
+import com.yd.activiti.BaseTest;
+import com.yd.activiti.demo.dao.oa.LeaveDao;
+import com.yd.activiti.demo.entity.oa.Leave;
+import com.yd.activiti.demo.service.oa.leave.LeaveService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +15,7 @@ import java.util.Date;
  * @author Yd on  2018-03-02
  * @description
  **/
-public class LeaveService1Test extends BaseTest {
+public class LeaveServiceTest extends BaseTest{
     @Autowired
     private LeaveService leaveService;
     @Autowired
@@ -33,9 +33,6 @@ public class LeaveService1Test extends BaseTest {
         leave.setLeaveType("公休");
         leave.setUserId("Yd");
         leave.setReason("no reason");
-        leaveService.save(leave);
-        System.out.println("Leave id:"+leave.getId()+"\n------------------------");
-
         leaveService.saveLeave(leave);
         System.out.println("Leave id:"+leave.getId()+"\n------------------------");
 
@@ -44,14 +41,9 @@ public class LeaveService1Test extends BaseTest {
     }
 
     @Test
-    public void testQryLeave(){
-        Leave leave = leaveService.getLeave(2L);
+    public void testQeyLeave(){
+        Leave leave = leaveService.getLeave(1L);
         System.out.println("------------------\n"+leave);
-    }
-
-    @Test
-    public void testDelete(){
-        leaveService.delete(1L);
     }
 
     @Test

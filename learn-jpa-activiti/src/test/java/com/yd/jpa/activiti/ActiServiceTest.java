@@ -23,8 +23,8 @@ public class ActiServiceTest extends BaseTest {
     public void deploy() throws  Exception{
         Deployment deployment = processEngine.getRepositoryService()
                 .createDeployment()
-                .name("1440aaa")
-                .addClasspathResource("activiti/Leave.bpmn.xml")
+                .name("leave")
+                .addClasspathResource("activiti/leave/ccc.bpmn.xml")
                 .deploy();
         //发布前测试;重要的3张表 01`act_re_deployment`  02`act_re_procdef`   03`act_ru_task`
         System.out.println("###########");
@@ -34,7 +34,7 @@ public class ActiServiceTest extends BaseTest {
     @Test //6.3启动流程
     public void startProcess(){
         ProcessInstance pi = processEngine.getRuntimeService()
-                .startProcessInstanceByKey("aaa");
+                .startProcessInstanceByKey("ccc");
         System.out.println(pi.getId()+" "+ pi.getActivityId());
 
     }

@@ -1,14 +1,11 @@
 package com.yd.springmvc.beans;
 
-import com.yd.common.util.format.DictionaryFormatter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -28,18 +25,17 @@ public class BeanConfiguration {
 
     @Bean(name = "java163MailSender")
     public JavaMailSender init163MailSender() {
-        JavaMailSenderImpl sender = new JavaMailSenderImpl();
-        sender.setHost(HOST);
-        sender.setPort(PORT);
-        sender.setUsername(USERNAME);
-        sender.setPassword(PASSWORD);
-        sender.setDefaultEncoding("Utf-8");
+        JavaMailSenderImpl java163MailSender = new JavaMailSenderImpl();
+        java163MailSender.setHost(HOST);
+        java163MailSender.setPort(PORT);
+        java163MailSender.setUsername(USERNAME);
+        java163MailSender.setPassword(PASSWORD);
+        java163MailSender.setDefaultEncoding("Utf-8");
         Properties p = new Properties();
         p.setProperty("mail.smtp.timeout", "25000");
         p.setProperty("mail.smtp.auth", "true");
-        sender.setJavaMailProperties(p);
-        return sender;
-
+        java163MailSender.setJavaMailProperties(p);
+        return java163MailSender;
     }
 
 }
