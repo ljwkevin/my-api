@@ -30,6 +30,9 @@ public class Leave implements Serializable {
     @Column
     private String userId;
 
+//    @OneToOne(fetch = FetchType.LAZY,mappedBy = "user")
+//    private User user;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "startTime")
     @Temporal(TemporalType.TIMESTAMP)
