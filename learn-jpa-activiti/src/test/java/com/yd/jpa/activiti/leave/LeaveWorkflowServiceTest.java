@@ -115,7 +115,7 @@ public class LeaveWorkflowServiceTest extends BaseTest {
 //                .processInstanceId("2501") //实例流程id
 //                .taskAssignee("leader123")   //查询任务被办理了
 //                .finished()//结束的流程
-                .unfinished()//为结束的流程
+                .unfinished()//未结束的流程
                 .orderByHistoricActivityInstanceEndTime().desc()    //排序
                 .list();
 
