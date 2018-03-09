@@ -545,7 +545,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>${project.build.sourceEncoding}</source>
+                    <source>${java.version}</source>
                     <target>${java.version}</target>
                     <debug>true</debug>
                     <encoding>${project.reporting.outputEncoding}</encoding>

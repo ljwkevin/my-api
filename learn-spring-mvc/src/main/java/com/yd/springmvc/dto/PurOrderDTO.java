@@ -10,7 +10,7 @@ import lombok.Data;
  * @description
  **/
 @Data
-public class LeaveDTO {
+public class PurOrderDTO {
 
     @ColumnDesc(columnDesc = "用户Id")
     private String userId;
