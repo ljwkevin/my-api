@@ -1,3 +1,0 @@
-activiti 工作流引擎部分
-整合 SpringMVC 4 + Hibernate jpa 4 + activiti 5.22.0
-使用内嵌 jetty 容器来运行该工程
