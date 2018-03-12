@@ -19,7 +19,6 @@
         <module>learn-feign</module>
         <module>learn-akka</module>
         <!--todo -->
-        <module>learn-groovy</module>
         <module>learn-apache-camel</module>
         <module>learn-webservice</module>
     </modules>
