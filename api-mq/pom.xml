@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.yd</groupId>
-    <artifactId>active-mq</artifactId>
+    <artifactId>api-mq</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
