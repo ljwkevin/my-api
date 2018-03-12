@@ -13,8 +13,8 @@
     <artifactId>learn-webservice</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>jpa-groovy demo</name>
-    <description>groovy demo for jpa version 1.13+</description>
+    <name>webservice demo</name>
+    <description>webservice for jpa version 1.13+</description>
 
     <developers>
         <developer>

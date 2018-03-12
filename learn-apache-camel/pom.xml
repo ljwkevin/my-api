@@ -13,8 +13,8 @@
     <artifactId>learn-apache-camel</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>jpa-groovy demo</name>
-    <description>groovy demo for jpa version 1.13+</description>
+    <name>apache-camel demo</name>
+    <description>apache-camel demo for jpa version 1.13+</description>
 
     <developers>
         <developer>
@@ -28,6 +28,7 @@
 
     <!-- 项目属性 -->
     <properties>
+        <camel.version>2.20.2</camel.version>
         <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -84,6 +85,34 @@
             <scope>compile</scope>
         </dependency>
         <!--common end-->
+
+        <!-- Camel integration -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-mvel</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cdi</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-stream</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

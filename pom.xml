@@ -19,16 +19,16 @@
         <module>learn-feign</module>
         <module>learn-akka</module>
         <!--todo -->
-        <!--<module>learn-groovy</module>-->
-        <!--<module>learn-apache-camel</module>-->
-        <!--<module>learn-webservice</module>-->
+        <module>learn-groovy</module>
+        <module>learn-apache-camel</module>
+        <module>learn-webservice</module>
     </modules>
 
 
     <properties>
         <maven_deploy_skip>true</maven_deploy_skip>
         <org.springframework.version>4.2.6.RELEASE</org.springframework.version>
-        <spring.security.version>3.2.3.RELEASE</spring.security.version>
+        <spring.security.version>4.2.4.RELEASE</spring.security.version>
         <aspectjweaver.version>1.8.6</aspectjweaver.version>
         <fastjson.version>1.2.29</fastjson.version>
         <tomcat-jdbc.version>7.0.42</tomcat-jdbc.version>
@@ -52,6 +52,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <hibernate.version>5.0.2.Final</hibernate.version>
+        <camel.version>2.20.2</camel.version>
     </properties>
 
     <repositories>
@@ -543,6 +544,33 @@
                 <groupId>com.sun.istack</groupId>
                 <artifactId>istack-commons-runtime</artifactId>
                 <version>3.0.5</version>
+            </dependency>
+
+            <!-- Camel integration -->
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-spring</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-mvel</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-cdi</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-core</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-stream</artifactId>
+                <version>${camel.version}</version>
             </dependency>
 
             <!-- 增加lombok依赖，用于生成Getter、Setter -->
