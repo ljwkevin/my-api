@@ -19,6 +19,7 @@
         <module>learn-spring-mvc</module>
         <module>learn-feign</module>
         <module>learn-groovy</module>
+        <module>learn-apache-camel</module>
     </modules>
 
 

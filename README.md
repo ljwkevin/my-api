@@ -1,7 +1,7 @@
 ## my-api 
 这是个人集合一些学习的仓库
 
-##active-mq 
+##api-mq 
 主要存放关于MQ的使用，目前只有amq
 
 ##api-common 
