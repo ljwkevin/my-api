@@ -13,13 +13,15 @@
         <module>api-mq</module>
         <module>operate-log</module>
         <module>spring-security</module>
-        <module>learn-akka</module>
         <module>learn-concurrency</module>
         <module>learn-jpa-activiti</module>
         <module>learn-spring-mvc</module>
         <module>learn-feign</module>
-        <module>learn-groovy</module>
-        <module>learn-apache-camel</module>
+        <module>learn-akka</module>
+        <!--todo -->
+        <!--<module>learn-groovy</module>-->
+        <!--<module>learn-apache-camel</module>-->
+        <!--<module>learn-webservice</module>-->
     </modules>
 
 
