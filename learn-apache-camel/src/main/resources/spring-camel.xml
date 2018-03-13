@@ -6,7 +6,7 @@
           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-    <bean id="myProcess" class="com.yd.camel.MyProcossor"></bean>
+    <bean id="myProcess" class="com.yd.camel.camel.MyProcossor"></bean>
 
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <route>

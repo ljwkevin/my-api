@@ -24,6 +24,10 @@ public class FormatterUtil implements ApplicationContextAware {
     static char[] hex = "0123456789ABCDEF".toCharArray();
     private static ApplicationContext applicationContext;
 
+    public static <T> T getApplicationContext(Class<T> tClass){
+        return applicationContext.getBean(tClass);
+    }
+
     public static <T extends BaseFormatEnum> String format(String key, T baseFormatEnum) {
         return baseFormatEnum.format(key);
     }

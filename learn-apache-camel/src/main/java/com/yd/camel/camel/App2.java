@@ -1,4 +1,4 @@
-package com.yd.camel;
+package com.yd.camel.camel;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
