@@ -21,6 +21,7 @@
         <!--todo -->
         <module>learn-apache-camel</module>
         <module>learn-webservice</module>
+        <module>learn-flowable</module>
     </modules>
 
 

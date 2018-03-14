@@ -14,7 +14,7 @@ public class GitHubServiceTest {
 
     public static void main(String[] args) {
         GitHub github = Feign.builder()
-                .decoder(new GsonDecoder())
+//                .decoder(new GsonDecoder())
 //                .logger(new Logger.JavaLogger().appendToFile("logs/http.log"))
 //                .logLevel(Logger.Level.FULL)
                 .target(GitHub.class, "https://api.github.com");

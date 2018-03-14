@@ -43,7 +43,7 @@ public class HelloWorld extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // 在本代码段之下随后的说明中，会详细说明这个构造的含义
-        from("jetty:http://0.0.0.0:8282/doHelloWorld")
+        from("jetty:http://0.0.0.0:8282/helloworld")
                 .process(new HttpProcessor())
                 .to("log:helloworld?showExchangeId=true");
     }
@@ -65,11 +65,11 @@ public class HelloWorld extends RouteBuilder {
             InputStream bodyStream = (InputStream) exchange.getIn().getBody();
             String inputContext = this.analysisMessage(bodyStream);
             bodyStream.close();
-
+            System.out.println("exchange.getIn.getHeaders ： "+exchange.getIn().getHeaders());
             // 存入到exchange的out区域
             if (exchange.getPattern() == ExchangePattern.InOut) {
                 Message outMessage = exchange.getOut();
-                outMessage.setBody(inputContext + " || out");
+                outMessage.setBody(inputContext + " || out HttpProcessor");
             }
         }
 
