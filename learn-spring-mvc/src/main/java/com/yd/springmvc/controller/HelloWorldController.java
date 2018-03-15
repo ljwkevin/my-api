@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Random;
-
 /**
  * @Author: zhengcanbiao
  * @Description:
@@ -33,7 +31,8 @@ public class HelloWorldController {
     @RequestMapping(value = "/getUser", method = {RequestMethod.POST})
     @ResponseBody
     public User getUser(@RequestBody User user) {
-        user.setId(RandomUtils.nextInt(1,100));
+        System.out.println("\n----user:" + user);
+        user.setId(RandomUtils.nextInt(1, 100));
         return user;
     }
 
