@@ -22,15 +22,15 @@ public class HelloWorldController {
     @Value("#{application['export2Excel.fileName']}")
     private String fileName;
 
-    @RequestMapping(value = "/sayHello", method = {RequestMethod.GET})
+    @RequestMapping(value = "/sayHello/{id}", method = {RequestMethod.GET})
     @ResponseBody
-    public String sayHello(@RequestParam("name") String name) {
-        return "sayHello " + name + " at" + fileName;
+    public String sayHello(@PathVariable("id") Integer id, @RequestParam("name") String name, @RequestParam("age") String age) {
+        return id + "sayHello " + name + " at " + age + fileName;
     }
 
-    @RequestMapping(value = "/getUser", method = {RequestMethod.POST})
+    @RequestMapping(value = "/getUser/{id}", method = {RequestMethod.POST})
     @ResponseBody
-    public User getUser(@RequestBody User user) {
+    public User getUser(@PathVariable("id") Integer id, @RequestBody User user) {
         System.out.println("\n----user:" + user);
         user.setId(RandomUtils.nextInt(1, 100));
         return user;
