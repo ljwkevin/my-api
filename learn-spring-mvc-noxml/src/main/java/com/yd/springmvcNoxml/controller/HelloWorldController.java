@@ -1,4 +1,4 @@
-package com.yd.springmvc.controller;
+package com.yd.springmvcNoxml.controller;
 
 import com.yd.entity.User;
 import org.apache.commons.lang3.RandomUtils;
@@ -8,19 +8,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @Author: zouYd
+ */
 @Controller
 @RequestMapping("/hello")
 public class HelloWorldController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("#{application['export2Excel.fileName']}")
-    private String fileName;
+//    @Value("#{application['user.id']}")
+    private String age ="1";
 
     @RequestMapping(value = "/sayHello/{id}", method = {RequestMethod.GET})
     @ResponseBody
     public String sayHello(@PathVariable("id") Integer id, @RequestParam("name") String name, @RequestParam("age") String age) {
-        return id + "sayHello " + name + " at " + age + fileName;
+        return id + "sayHello " + name + " id " + id + "age" + age;
     }
 
     @RequestMapping(value = "/getUser/{id}", method = {RequestMethod.POST})
