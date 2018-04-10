@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yd</groupId>
-    <artifactId>learn-feign</artifactId>
+    <artifactId>learn-dubbo</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
@@ -25,60 +25,63 @@
     </developers>
 
     <properties>
-        <feign.version>8.18.0</feign.version>
+        <dubbo.version>2.6.1</dubbo.version>
+        <curator.version>2.12.0</curator.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-core</artifactId>
-            <version>${feign.version}</version>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>${curator.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-jackson</artifactId>
-            <version>${feign.version}</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+
+        <!--logger start-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-gson</artifactId>
-            <version>${feign.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-sax</artifactId><!-- 解析XML,并兼容普通JVM和Android-->
-            <version>${feign.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-jaxb</artifactId>
-            <version>${feign.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <!--logger end-->
+
+        <!-- spring start-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-jaxrs</artifactId><!-- 使用 JAX-RS 规范重写覆盖了默认的注解处理-->
-            <version>${feign.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-okhttp</artifactId><!-- OkHttp 来发送 Feign 的请求，OkHttp 支持 SPDY-->
-            <version>${feign.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-ribbon</artifactId>
-            <version>${feign.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-hystrix</artifactId>
-            <version>${feign.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-slf4j</artifactId>
-            <version>${feign.version}</version>
-        </dependency>
+        <!-- spring end-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>

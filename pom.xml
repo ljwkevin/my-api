@@ -5,6 +5,12 @@
     <groupId>com.yd</groupId>
     <artifactId>my-api</artifactId>
     <version>1.0.0</version>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
     <packaging>pom</packaging>
 
     <modules>
@@ -23,6 +29,8 @@
         <module>learn-webservice</module>
         <module>learn-flowable</module>
         <module>learn-spring-mvc-noxml</module>
+        <module>learn-groovy</module>
+        <module>learn-dubbo</module>
     </modules>
 
 
@@ -268,28 +276,10 @@
             </dependency>
 
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>3.3.2</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-collections</groupId>
-                <artifactId>commons-collections</artifactId>
-                <version>3.2.1</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bcprov-jdk15on</artifactId>
                 <version>1.52</version>
             </dependency>
-
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>1.2</version>
-            </dependency>
-
 
             <!-- apache.shiro -->
             <dependency>
@@ -401,19 +391,6 @@
                 <version>3.2.1</version>
             </dependency>
 
-            <!--validation-->
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
-            </dependency>
-            <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>5.3.1.Final</version>
-            </dependency>
-
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
@@ -451,13 +428,6 @@
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-core</artifactId>
                 <version>1.3</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${org.springframework.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -620,6 +590,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>

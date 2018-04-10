@@ -1,17 +1,10 @@
 package com.yd.feign.service;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import feign.Feign;
-import feign.Logger;
 import feign.Param;
 import feign.RequestLine;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
-import feign.jackson.JacksonDecoder;
-import feign.jackson.JacksonEncoder;
 
 import java.util.List;
 
@@ -22,10 +15,6 @@ import java.util.List;
 public class GitHubServiceTest {
 
     public static void main(String[] args) {
-        ObjectMapper mapper = new ObjectMapper()
-                .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-                .configure(SerializationFeature.INDENT_OUTPUT, true)
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         GitHub github = Feign.builder()
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())

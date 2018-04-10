@@ -14,7 +14,7 @@ public class JedisSimpleTest {
      */  
     @Before
     public void beforeClass() {  
-        jedis = new Jedis("192.168.2.63",6379);
+        jedis = new Jedis("192.168.1.58",8092);
 //        jedis.auth("");
         System.out.println(jedis);
         String abc = jedis.ping();//要打印出pong
