@@ -19,7 +19,7 @@
         <module>api-mq</module>
         <module>operate-log</module>
         <module>spring-security</module>
-        <module>learn-concurrency</module>
+        <module>learn-java</module>
         <module>learn-jpa-activiti</module>
         <module>learn-spring-mvc</module>
         <module>learn-feign</module>
