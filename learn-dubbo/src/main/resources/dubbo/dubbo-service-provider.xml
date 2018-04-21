@@ -12,6 +12,6 @@
 
     <dubbo:service interface="com.yd.dubbo.hello.service.DemoService" ref="demoService"/>
 
-    <bean id="demoService" class="com.yd.dubbo.hello.imp.DemoServiceImpl"/>
+    <bean id="demoService" class="com.yd.dubbo.hello.service.imp.DemoServiceImpl"/>
 
 </beans>

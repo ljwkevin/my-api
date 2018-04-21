@@ -1,4 +1,4 @@
-package com.yd.dubbo.hello.imp;
+package com.yd.dubbo.hello.service.imp;
 
 import com.yd.dubbo.hello.service.DemoService;
 

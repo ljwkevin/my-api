@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yd</groupId>
-    <artifactId>learn-concurrency</artifactId>
+    <artifactId>learn-java</artifactId>
 
     <dependencies>
         <dependency>
