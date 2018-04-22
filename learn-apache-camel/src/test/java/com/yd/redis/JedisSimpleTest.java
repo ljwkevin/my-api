@@ -1,5 +1,6 @@
 package com.yd.redis;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
@@ -65,5 +66,10 @@ public class JedisSimpleTest {
     @Test  
     public void testKeys() {  
         System.out.println(jedis.keys("*"));  
-    }  
+    }
+
+    @After
+    public void destroy(){
+        jedis.close();
+    }
 }  
