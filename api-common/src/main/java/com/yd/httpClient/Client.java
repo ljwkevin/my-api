@@ -131,7 +131,7 @@ public class Client extends ClientConnection {
      */
     private ClientResult readResponse(String httpMethod, HttpURLConnection conn) throws IOException {
         int httpCode = conn.getResponseCode();
-        logger.debug("Connection done. The server's response code is: %s", new Object[]{httpCode});
+        logger.debug("Connection done. The server's response code is: {}", new Object[]{httpCode});
         InputStream is = null;
 
         boolean isSuccess = httpCode < HttpURLConnection.HTTP_BAD_REQUEST;
@@ -193,7 +193,7 @@ public class Client extends ClientConnection {
                             return login(httpMethod, clientRequest);
                         }
                     }
-                    logger.debug("Reading an OK (%s) response", httpCode);
+                    logger.debug("Reading an OK {} response", httpCode);
                 }
             }
             return result;

@@ -80,7 +80,7 @@ public class HttpClientUtil {
     }
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        String GET_ORGLIST_URL = "http://192.168.2.49:8080/flowable-rest/service/runtime/tasks/22654";
+        String GET_ORGLIST_URL = "http://erp2.test.pagoda.com.cn:8080/flowable-rest/service/form/form-data?taskId=122549";
         String userName = "admin";
         String password = "test";
         String auth = userName + ":" + password;
@@ -88,6 +88,10 @@ public class HttpClientUtil {
         String authHeader = "Basic " + new String(encodedAuth);
         Map<String, String> header = new HashMap<String, String>();
         header.put("Authorization", authHeader);
+        String userAgent = "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36";
+//        header.put("User-Agent",userAgent);
+        String cookie="FLOWABLE_REMEMBER_ME=K2FERlY2YWNDTmRKbHBlQ1RHKzhIQT09OjcrU0ZMaWNZbENQcERCaG8wRXM1dmc9PQ";
+        header.put("Cookie",cookie);
 
         ClientResult clientResult = get(GET_ORGLIST_URL, null, header);
         if (clientResult != null) {
