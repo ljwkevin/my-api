@@ -80,7 +80,7 @@ public class HttpClientUtil {
     }
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        String GET_ORGLIST_URL = "http://erp2.test.pagoda.com.cn:8080/flowable-rest/service/form/form-data?taskId=122549";
+        String GET_ORGLIST_URL = "http://restapi.amap.com/v3/config/district?subdistrict=3&key=89e51c7379bc5544035285a938555498";
         String userName = "admin";
         String password = "test";
         String auth = userName + ":" + password;
