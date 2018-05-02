@@ -29,7 +29,7 @@ public class GaodeMapApiTest {
         String key = "89e51c7379bc5544035285a938555498";
         String subdistrict = "3";
         //todo 待测试，返回数据 没磨合
-        Result result = api.getcityBy(subdistrict, key);
+        Result result = api.getCityBy(subdistrict, key);
 
         System.out.println("\n api:" + result);
     }
@@ -38,7 +38,7 @@ public class GaodeMapApiTest {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     interface MapApi {
         @RequestLine("GET /v3/config/district?subdistrict={subdistrict}&key={key}")
-        Result getcityBy(@Param(value = "subdistrict") String subdistrict, @Param(value = "key") String key);
+        Result getCityBy(@Param(value = "subdistrict") String subdistrict, @Param(value = "key") String key);
     }
 
     static class Result {
