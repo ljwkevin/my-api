@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 public class HelloStream {
     public static void main(String[] args) {
         List<User> users = new ArrayList<User>();
+        users.add(new User());
         long count = users.stream().filter(user -> "Yd".equals(user.getName())).count();
         System.out.println(count);
 
