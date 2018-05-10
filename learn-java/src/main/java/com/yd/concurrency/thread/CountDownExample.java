@@ -46,5 +46,8 @@ public class CountDownExample {
         },100,100, TimeUnit.HOURS);
 
         Long randomLong = new Random().nextLong();
+
+        ConcurrentSkipListMap m = new ConcurrentSkipListMap();
+        ConcurrentHashMap map = new ConcurrentHashMap();
     }
 }
