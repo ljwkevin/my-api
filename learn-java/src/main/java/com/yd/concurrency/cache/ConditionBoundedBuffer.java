@@ -9,6 +9,9 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @author Yd on  2018-05-11
  * @description
+ * 为了让一个类具有状态依赖性，它必须拥有一些状态。
+ * 同步类中有些状态需要管理。这些任务落在AQS上：它管理一个关于状态信息的单一整数，状态信息可以通过getState
+ * casState
  **/
 public class ConditionBoundedBuffer<T> {
     protected final Lock lock = new ReentrantLock();
