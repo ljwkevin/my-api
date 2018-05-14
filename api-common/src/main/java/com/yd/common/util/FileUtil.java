@@ -25,7 +25,7 @@ public class FileUtil {
             }
         }
 
-        return true;
+        return false;
     }
 
     /**

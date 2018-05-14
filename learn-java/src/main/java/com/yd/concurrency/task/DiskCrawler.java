@@ -1,4 +1,4 @@
-package com.yd.concurrency;
+package com.yd.concurrency.task;
 
 
 import com.yd.common.util.FileUtil;
@@ -48,7 +48,7 @@ public class DiskCrawler {
         String rootPath = "D:\\ChromeDownload";
         String fileNameLike = "apache";
         startIndexing(rootPath, fileNameLike);
-        Thread.currentThread().setDaemon(true);
+        Thread.currentThread().setDaemon(true);//todo 任务还未结束，主线程就结束了
     }
 
 }
