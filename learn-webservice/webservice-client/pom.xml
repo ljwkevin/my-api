@@ -3,18 +3,45 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>api</artifactId>
+        <artifactId>learn-webservice</artifactId>
         <groupId>com.yd</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yd</groupId>
-    <artifactId>api-common</artifactId>
-    <name>api-common Maven jar</name>
+    <artifactId>webservice-client</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <developers>
+        <developer>
+            <id>Yd</id>
+            <name>Zeb灬D</name>
+            <email>1406721322@qq.com</email>
+            <url>http://www.zouYd.com</url>
+            <timezone>8</timezone>
+        </developer>
+    </developers>
+
+    <properties>
+        <dubbo.version>2.6.1</dubbo.version>
+        <curator.version>2.12.0</curator.version>
+    </properties>
 
     <dependencies>
-        <!-- log -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>${curator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+
+        <!--logger start-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -31,7 +58,21 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
+        <!--logger end-->
 
+        <!-- spring start-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -40,33 +81,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
+        <!-- spring end-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.sun.istack</groupId>
-            <artifactId>istack-commons-runtime</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -77,35 +97,10 @@
             <version>0.10</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.yd</groupId>
-            <artifactId>je-analysis</artifactId>
-            <version>1.5.3</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/je-analysis-1.5.3.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.yd</groupId>
-            <artifactId>lucene-core</artifactId>
-            <version>2.4.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/lucene-core-2.4.1.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/ojdbc6-11.2.0.1.0.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
+            <artifactId>api-common</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

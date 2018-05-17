@@ -54,7 +54,7 @@ public class DataTransformTest {
     public void testGetTableInfo() {
         DBDataExtract.getConnection("oracle.jdbc.driver.OracleDriver",
                 "jdbc:oracle:thin:@106.75.134.252:1521:orac", "serp", "serp#123");
-        DBDataExtract.getOracleTableInfo("PUB_ORG_ITEM_MASTER");
+        DBDataExtract.getOracleTableInfo("inv_depot_period");
         DBDataExtract.close();
     }
 

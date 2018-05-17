@@ -22,7 +22,7 @@ public class ServiceProvider {
 
         // 连接注册中心配置
         RegistryConfig registry = new RegistryConfig();
-        registry.setAddress("zookeeper://139.159.247.139:2083");
+        registry.setAddress("zookeeper://erp2.test.pagoda.com.cn:2083");
         registry.setUsername("aaa");
         registry.setPassword("bbb");
 
