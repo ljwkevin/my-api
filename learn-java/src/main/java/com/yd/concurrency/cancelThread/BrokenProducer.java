@@ -34,7 +34,8 @@ public class BrokenProducer extends Thread {
         BlockingQueue<BigInteger> primes = new ArrayBlockingQueue<BigInteger>(8);
         BrokenProducer producer = new BrokenProducer(primes);
         producer.start();
-
+        //当jvm关闭的时候，会执行系统中已经设置的所有通过方法addShutdownHook添加的钩子，当系统执行完这些钩子后，jvm才会关闭。
+        Runtime.getRuntime().addShutdownHook(producer);//加上关闭钩子
         try{
             while (!primes.isEmpty()){
                BigInteger p = primes.take();
