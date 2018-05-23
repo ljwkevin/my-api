@@ -7,7 +7,7 @@ package com.yd.concurrency.singletonCase;
  * @description
  **/
 public class DCLInit {
-    private static Object object;
+    private static volatile Object object= null;
 
     public static Object getInstance() {
         if (object == null) {

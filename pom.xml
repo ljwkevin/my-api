@@ -28,6 +28,7 @@
         <module>learn-apache-camel</module>
         <module>learn-webservice</module>
         <module>learn-flowable</module>
+        <module>learn-spring</module>
         <module>learn-spring-mvc-noxml</module>
         <module>learn-groovy</module>
         <module>learn-dubbo</module>

@@ -1,5 +1,7 @@
 package com.yd.jdk.bitOp;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * 位运算符
  * 源码 与 补码 之间的关系要清楚
@@ -82,5 +84,7 @@ public class BitOperationTest {
         testLShift();
         testRShift();
         testUnsignedRShift();
+        int HASH_BITS = 0x7fffffff;
+        System.out.println(HASH_BITS);
     }
 }
