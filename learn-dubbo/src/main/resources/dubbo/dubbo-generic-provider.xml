@@ -4,7 +4,16 @@
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="demo-consumer"/>
+    <dubbo:application name="demo-provider"/>
+
     <dubbo:registry address="zookeeper://erp2.test.pagoda.com.cn:2083"/>
-    <dubbo:reference id="demoService" interface="com.yd.dubbo.hello.service.DemoService" async="true"  sent="true" version="1.0.0"/>
+
+    <dubbo:protocol name="dubbo,injvm" port="20880"/>
+
+    <dubbo:provider protocol="injvm"  />
+
+    <bean id="genericService" class="com.yd.dubbo.generic.MyGenericService" />
+    <dubbo:service interface="com.yd.dubbo.hello.service.DemoService" ref="genericService" />
+
+
 </beans>

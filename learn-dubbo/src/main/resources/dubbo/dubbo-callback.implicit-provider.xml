@@ -4,7 +4,8 @@
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="demo-consumer"/>
+    <dubbo:application name="rpc-callback-demo" />
     <dubbo:registry address="zookeeper://erp2.test.pagoda.com.cn:2083"/>
-    <dubbo:reference id="demoService" interface="com.yd.dubbo.hello.service.DemoService" async="true"  sent="true" version="1.0.0"/>
+    <bean id="demoService" class="com.yd.dubbo.callback.implicit.NormalDemoService" />
+    <dubbo:service interface="com.yd.dubbo.callback.implicit.IDemoService" ref="demoService" version="1.0.0" group="cn"/>
 </beans>

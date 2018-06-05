@@ -6,5 +6,5 @@
 
     <dubbo:application name="demo-consumer"/>
     <dubbo:registry address="zookeeper://erp2.test.pagoda.com.cn:2083"/>
-    <dubbo:reference id="demoService" interface="com.yd.dubbo.hello.service.DemoService" async="true"  sent="true" version="1.0.0"/>
+    <dubbo:reference id="demoService" interface="com.yd.dubbo.hello.service.DemoService" generic="true"/>
 </beans>
