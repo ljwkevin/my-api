@@ -596,6 +596,58 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.1.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependencies</report>
+                            <report>project-team</report>
+                            <report>developers</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <type>range</type>
+                    <range>60</range>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+    <developers>
+        <developer>
+            <id>Yd</id>
+            <name>Zeb灬D</name>
+            <email>1406721322@qq.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:svn://192.168.1.62:3890/member/trunk/99.Code/99.1Trunk</connection>
+        <url>svn://192.168.1.62:3890/member/trunk/99.Code/99.1Trunk</url>
+        <developerConnection>svn://192.168.1.62:3890/member/trunk/99.Code/99.1Trunk</developerConnection>
+    </scm>
 </project>

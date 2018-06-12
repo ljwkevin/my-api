@@ -6,6 +6,7 @@ package com.yd.jdk.string;
  **/
 public class StringTest {
     public static void main(String[] args) {
-
+        char name='永';
+        System.out.println(Character.charCount(name));
     }
 }
