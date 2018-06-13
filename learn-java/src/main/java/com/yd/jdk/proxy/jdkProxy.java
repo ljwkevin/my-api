@@ -9,12 +9,15 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CustomizeHandle implements InvocationHandler {
-    private final static Logger LOGGER = LoggerFactory.getLogger(CustomizeHandle.class);
+/**
+ * jdk动态代理 ，必须面向接口
+ */
+public class jdkProxy implements InvocationHandler {
+    private final static Logger LOGGER = LoggerFactory.getLogger(jdkProxy.class);
 
-    private Object target;
+    private Object target;//代理类为实现类
 
-    public CustomizeHandle(Class clazz) {
+    public jdkProxy(Class clazz) {
         try {
             this.target = clazz.newInstance();
         } catch (InstantiationException e) {
@@ -29,6 +32,7 @@ public class CustomizeHandle implements InvocationHandler {
 
         before();
         Object result = method.invoke(target, args);
+        System.out.println(args);
         after();
 
         LOGGER.info("proxy class={}", proxy.getClass());
@@ -45,8 +49,8 @@ public class CustomizeHandle implements InvocationHandler {
     }
 
     public static void main(String[] args) {
-        CustomizeHandle handle = new CustomizeHandle(HashMap.class) ;
-        Map map = (Map) Proxy.newProxyInstance(CustomizeHandle.class.getClassLoader(), new Class[]{Map.class}, handle);
+        jdkProxy handle = new jdkProxy(HashMap.class) ;
+        Map map = (Map) Proxy.newProxyInstance(jdkProxy.class.getClassLoader(), new Class[]{Map.class}, handle);
         map.put("a","a");
         System.out.println(map.get("a"));
     }
