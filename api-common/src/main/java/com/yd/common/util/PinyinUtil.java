@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 获取中文拼音工具类
  *
- * @author admin
+ * @author Yd on 2018-06-10
  */
 public class PinyinUtil {
 
