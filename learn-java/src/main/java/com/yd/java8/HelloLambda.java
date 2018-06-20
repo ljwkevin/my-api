@@ -1,6 +1,7 @@
 package com.yd.java8;
 
 import java.awt.event.ActionListener;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 
@@ -27,7 +28,8 @@ public class HelloLambda {
         };
         BinaryOperator<Long> add = (x, y) -> x + y;
         BinaryOperator<Long> addExp = (Long x, Long y) -> x + y;
-
+        Optional.ofNullable(add);
+        Long result = add.apply(1L,3L);
         Predicate<Integer> atLeast5 = x -> x > 5;
         System.out.println(atLeast5.test(6));
     }
