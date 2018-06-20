@@ -14,7 +14,14 @@ import java.util.Set;
  * Selector（选择器）是Java NIO中能够检测一到多个NIO通道，并能够知晓通道是否为诸如读写事件做好准备的组件。这样，一个单独的线程可以管理多个channel，从而管理多个网络连接。
  *
  * @author Yd on  2018-06-20
- * @description
+ * @description IO                NIO
+ * 面向流            面向缓冲
+ * 阻塞IO            非阻塞IO
+ * 无                选择器
+ * 无论您选择IO或NIO工具箱，可能会影响您应用程序设计的以下几个方面：
+ * 对NIO或IO类的API调用。
+ * 数据处理。
+ * 用来处理数据的线程数。
  **/
 public class SelectorTest {
 
@@ -32,9 +39,9 @@ public class SelectorTest {
         return key;
     }
 
-    public static int selectInterest(SelectionKey selectionKey){
+    public static int selectInterest(SelectionKey selectionKey) {
         int interestSet = selectionKey.interestOps();
-        boolean isInterestedInAccept  = (interestSet & SelectionKey.OP_ACCEPT) == SelectionKey.OP_ACCEPT;
+        boolean isInterestedInAccept = (interestSet & SelectionKey.OP_ACCEPT) == SelectionKey.OP_ACCEPT;
         boolean isInterestedInConnect = (interestSet & SelectionKey.OP_CONNECT) == SelectionKey.OP_CONNECT;
         System.out.println(interestSet);
         System.out.println(isInterestedInAccept);
@@ -42,7 +49,7 @@ public class SelectorTest {
         selectionKey.isAcceptable();
         selectionKey.isConnectable();
         selectionKey.attach("Name is Yd");
-        Channel  channel  = selectionKey.channel();
+        Channel channel = selectionKey.channel();
         Selector selector = selectionKey.selector();
 
         return interestSet;
@@ -52,14 +59,14 @@ public class SelectorTest {
         Selector selector = Selector.open();
         channel.configureBlocking(false);
         channel.register(selector, SelectionKey.OP_READ);
-        while(true) {
+        while (true) {
             int readyChannels = selector.select();
-            if(readyChannels == 0) continue;
+            if (readyChannels == 0) continue;
             Set selectedKeys = selector.selectedKeys();
             Iterator keyIterator = selectedKeys.iterator();
-            while(keyIterator.hasNext()) {
+            while (keyIterator.hasNext()) {
                 SelectionKey key = (SelectionKey) keyIterator.next();
-                if(key.isAcceptable()) {
+                if (key.isAcceptable()) {
                     // a connection was accepted by a ServerSocketChannel.
                 } else if (key.isConnectable()) {
                     // a connection was established with a remote server.

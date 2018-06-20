@@ -14,7 +14,8 @@ import java.nio.channels.FileChannel;
  * 在读模式下，可以读取之前写入到buffer的所有数据。
  *
  * @author Yd on  2018-06-20
- * @description Buffer 三个重要的属性：
+ * @description
+ * <p>Buffer 三个重要的属性：
  * capacity、作为一个内存块，Buffer有一个固定的大小值，也叫“capacity”.你只能往里写capacity个byte、long，char等类型。一旦Buffer满了，需要将其清空（通过读数据或者清除数据）才能继续写数据往里写数据。
  * position、当你写数据到Buffer中时，position表示当前的位置。初始的position值为0.当一个byte、long等数据写到Buffer后， position会向前移动到下一个可插入数据的Buffer单元。position最大可为capacity – 1.
  * 当读取数据时，也是从某个特定位置读。当将Buffer从写模式切换到读模式，position会被重置为0. 当从Buffer的position处读取数据时，position向前移动到下一个可读的位置。
