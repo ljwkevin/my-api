@@ -1,5 +1,7 @@
 package com.yd.jdk.nio;
 
+import com.yd.jdk.Constant;
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -24,7 +26,7 @@ public class AtheriTest {
         ByteBuffer body   = ByteBuffer.allocate(1024);
         ByteBuffer[] bufferArray = { header, body };
 
-        String fileName = System.getProperty("user.dir") + "/Serialize.dat";
+        String fileName = Constant.FILENAME;
         RandomAccessFile randomAccessFile = new RandomAccessFile(fileName, "rw");
         FileChannel channel = randomAccessFile.getChannel();
 

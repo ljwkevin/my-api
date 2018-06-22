@@ -1,5 +1,7 @@
 package com.yd.jdk.io;
 
+import com.yd.jdk.Constant;
+
 import java.io.File;
 import java.io.FileFilter;
 
@@ -21,13 +23,13 @@ public class FileTest {
 
     public static void main(String[] args) {
         //创建File
-        File file = new File("c:\\data\\input-file.txt");
+        File file = new File(Constant.FILENAME);
 
         boolean fileExists = file.exists();
 
         long length = file.length();
 
-        boolean success = file.renameTo(new File("c:\\data\\new-file.txt"));
+        boolean success = file.renameTo(new File(Constant.FILENAME+".bak"));
         //返回布尔值表明是否成功删除文件，同样也会有相同的操作失败原因
         boolean success1 = file.delete();
 

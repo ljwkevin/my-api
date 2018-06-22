@@ -1,5 +1,7 @@
 package com.yd.jdk.nio;
 
+import com.yd.jdk.Constant;
+
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
@@ -25,8 +27,7 @@ import java.nio.channels.FileChannel;
  **/
 public class BufferTest {
     public static void main(String[] args) throws Exception {
-        String fileName = System.getProperty("user.dir") + "/Serialize.dat";
-        fileChannelTest(fileName, "rw");
+        fileChannelTest(Constant.FILENAME, "rw");
     }
 
     /**

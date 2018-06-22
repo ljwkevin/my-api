@@ -33,7 +33,7 @@ public class ChannelTest {
     public static void  socketChannelTest() throws IOException {
         SocketChannel socketChannel = SocketChannel.open();
         socketChannel.configureBlocking(false);
-        socketChannel.connect(new InetSocketAddress("http://jenkov.com", 80));
+        socketChannel.connect(new InetSocketAddress("http://148.251.188.73", 80));
 
         while(! socketChannel.finishConnect() ){
             //wait, or do something else...
