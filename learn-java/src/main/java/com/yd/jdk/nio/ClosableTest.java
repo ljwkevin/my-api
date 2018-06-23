@@ -17,7 +17,7 @@ import java.io.*;
  **/
 public class ClosableTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(
                         new FileInputStream(new File(System.getProperty("user.dir") + "/Serialize.dat")), "UTF8"), 1024)
@@ -29,6 +29,8 @@ public class ClosableTest {
         }
 
 //        try(Closeable variable1,2,3){}catch (Exception e){} //调用格式
-
+        try(MyAutoClosable myAutoClosable = new MyAutoClosable()){
+            myAutoClosable.doIt();
+        }
     }
 }

@@ -7,5 +7,6 @@ package com.yd.jdk;
  * @description
  **/
 public class Constant {
-    public static final String FILENAME = System.getProperty("user.dir") + "/Serialize.dat";
+    public static final String USR_DIR = System.getProperty("user.dir");
+    public static final String FILENAME = USR_DIR + "/Serialize.dat";
 }
