@@ -57,10 +57,10 @@ public class MutilPrime {
 		System.out.println(isPrime(25));
 		System.out.println(primeList(m));
 
-		List<Integer> temp = primeList(m);
+		List<Integer> primeList = primeList(m);
 		List<Integer> result = new ArrayList<Integer>();
 		Set<List<Integer>> resultSet = new HashSet<List<Integer>>();
-		recusion(m, temp, resultSet, result);
+		recusion(m, primeList, resultSet, result);
 		System.out.println(resultSet);
 
 	}

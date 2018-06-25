@@ -30,21 +30,21 @@ public class FileTest {
         long length = file.length();
 
         boolean success = file.renameTo(new File(Constant.FILENAME+".bak"));
-        //返回布尔值表明是否成功删除文件，同样也会有相同的操作失败原因
-        boolean success1 = file.delete();
 
         boolean isDirectory = file.isDirectory();
-
-        String[] fileNames = file.list();
-
-        File[] files = file.listFiles();
-
         file.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
                 return false;
             }
         });
+
+        String[] fileNames = file.list();
+
+        File[] files = file.listFiles();
+
+        //返回布尔值表明是否成功删除文件，同样也会有相同的操作失败原因
+        boolean success1 = new File(Constant.FILENAME+".bak").delete();
 
     }
 

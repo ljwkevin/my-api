@@ -25,10 +25,9 @@ public class SystemTest {
     }
 
     public static void out() throws IOException {
-        OutputStream output = new FileOutputStream(Constant.USR_DIR + "／system.out.txt");
+        OutputStream output = new FileOutputStream(Constant.TEMP);
 
         PrintStream printOut = new PrintStream(output);
-        output.write("abc".getBytes());
         System.setOut(printOut);
         System.out.println("hello-world!!!");
         System.out.flush();

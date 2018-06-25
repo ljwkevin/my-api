@@ -1,6 +1,8 @@
 package com.yd.jdk.io;
 
-import java.io.IOException;
+import ch.qos.logback.core.OutputStreamAppender;
+
+import java.io.*;
 import java.util.Map;
 
 /**
@@ -22,14 +24,25 @@ import java.util.Map;
  * @author yd on 2018-06-22
  */
 public class ProcessTest {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         ProcessBuilder processBuilder = new ProcessBuilder();
         Map<String, String> environment = processBuilder.environment();
         assert environment != null;
 
         Runtime runtime =Runtime.getRuntime();
-        Process process = Runtime.getRuntime().exec("dir");
-        process.getOutputStream();
+
+        //注意，各个os支持的命令不一样
+        Process process = Runtime.getRuntime().exec(new String[]{"ls","-l"});//ping www.baidu.com
+        InputStream input = process.getInputStream();//取得命令结果的输出流
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+        String result = null;
+        while ((result=reader.readLine())!=null){
+            System.out.println(result);//输出执行命令后的结果
+        }
+
         System.out.println(String.format("total men :%s",runtime.totalMemory()));
+//        process.waitFor();
+        process.destroyForcibly();
     }
 }
