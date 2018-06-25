@@ -9,4 +9,9 @@ package com.yd.jdk;
 public class Constant {
     public static final String USR_DIR = System.getProperty("user.dir");
     public static final String FILENAME = USR_DIR + "/Serialize.dat";
+
+    static {
+        System.out.println("USER_DIR >>> " + USR_DIR);
+        System.out.println("FILENAME >>> " + FILENAME);
+    }
 }

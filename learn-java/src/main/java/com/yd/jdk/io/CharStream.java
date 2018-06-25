@@ -27,24 +27,17 @@ public class CharStream {
     // 这并不意味着Reade只会从数据源中一次读取2个字节，Reader会根据文本的编码，一次读取一个或者多个字节。
     public static void reader() throws IOException {
         Reader reader = new FileReader(Constant.FILENAME);
-
         int data = reader.read();
-
         while (data != -1) {
-
             char dataChar = (char) data;
-
             data = reader.read();
         }
     }
 
     public static void writer() throws IOException {
         Writer writer = new FileWriter(Constant.FILENAME);
-
         writer.write("Hello World Writer");
-
         writer.close();
-
         Writer writer1 = new OutputStreamWriter(new FileOutputStream(Constant.FILENAME));
     }
 
@@ -54,4 +47,53 @@ public class CharStream {
 
     }
 
+    //InputStreamReader和OutputStreamWriter
+    //两个类把字节流转换成字符流，中间做了数据的转换，类似适配器模式的思想。
+    public static void StreamReader() throws IOException {
+        InputStream inputStream = new FileInputStream(Constant.FILENAME);
+        InputStreamReader reader = new InputStreamReader(inputStream);
+        int data = reader.read();//read()方法返回一个包含了读取到的字符内容的int类型变量(译者注：0~65535)。
+        while (data != -1) {
+            char theChar = (char) data;//这里不会造成数据丢失，因为返回的int类型变量data只有低16位有数据，高16位没有数据
+            data = reader.read();
+        }
+        reader.close();
+
+        //第二个参数，此时该InputStreamReader会将输入的字节流转换成UTF8字符流。
+        reader = new InputStreamReader(inputStream, "UTF-8");
+
+        OutputStream outputStream = new FileOutputStream(Constant.FILENAME);
+        Writer writer = new OutputStreamWriter(outputStream);
+        writer.write("Hello World");//将该输出字节流转换成字符流
+        writer.close();
+
+    }
+
+    //如果你想明确指定一种编码方案，利用InputStreamReader配合FileInputStream来替代FileReader(译者注：FileReader没有可以指定编码的构造函数)。
+    // InputStreamReader可以让你设置编码处理从底层文件中读取的字节。
+    //同样，FileWriter不能指定编码，可以通过OutputStreamWriter配合FileOutputStream替代FileWriter。
+    public static void FileReaderWriter() throws IOException {
+        Reader reader = new FileReader(Constant.FILENAME);
+        int data = reader.read();
+        while (data != -1) {
+            //do something with data...
+            data = reader.read();
+        }
+        reader.close();
+
+        Writer writer = new FileWriter(Constant.FILENAME, true); //appends to file
+    }
+
+    //管道与字符数组相关的reader和writer，主要涉及PipedReader、PipedWriter、CharArrayReader、CharArrayWriter。
+    //PipedReader能够从管道中读取字符流。与PipedInputStream类似，不同的是PipedReader读取的是字符而非字节。换句话说，PipedReader用于读取管道中的文本。
+    public static void pipe() throws IOException {
+        PipedWriter pipedWriter = new PipedWriter();
+        Reader reader = new PipedReader(pipedWriter);
+        int data = reader.read();
+        while(data != -1) {
+            //do something with data...
+            data = reader.read();
+        }
+        reader.close();
+    }
 }

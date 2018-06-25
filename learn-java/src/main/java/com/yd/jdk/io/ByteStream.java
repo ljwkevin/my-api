@@ -23,11 +23,42 @@ public class ByteStream {
 
     }
 
-    public static void pipe() throws IOException {
-        try(
+    /**
+     * Java IO中的管道为运行在同一个JVM中的两个线程提供了通信的能力。所以管道也可以作为数据源以及目标媒介。
+     * 你不能利用管道与不同的JVM中的线程通信(不同的进程)。在概念上，Java的管道不同于Unix/Linux系统中的管道。
+     * 在Unix/Linux中，运行在不同地址空间的两个进程可以通过管道通信。在Java中，通信的双方应该是运行在同一进程中的不同线程。
+     * 一个PipedInputStream流应该和一个PipedOutputStream流相关联。
+     * 一个线程通过PipedOutputStream写入的数据可以被另一个线程通过相关联的PipedInputStream读取出来。
+     *
+     * @throws IOException
+     */
+    public static void pipe() {
+        //当使用两个相关联的管道流时，务必将它们分配给不同的线程。
+        // read()方法和write()方法调用时会导致流阻塞，这意味着如果你尝试在一个线程中同时进行读和写，可能会导致线程死锁。
+        try (
                 PipedOutputStream pipedOutputStream = new PipedOutputStream();
-                PipedInputStream pipedInputStream =new PipedInputStream(pipedOutputStream)
-                ){}
+                PipedInputStream pipedInputStream = new PipedInputStream(pipedOutputStream)
+        ) {
+            new Thread(() -> {
+                try {
+                    pipedOutputStream.write("hello pipe!".getBytes());
+                } catch (IOException e) {
+
+                }
+            }).start();
+            new Thread(() -> {
+                try {
+                    int data = pipedInputStream.read();
+                    while (data != -1) {
+                        System.out.println((char) data);
+                        data = pipedInputStream.read();
+                    }
+                } catch (IOException e) {
+                }
+            }).start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void input() throws IOException {
@@ -72,10 +103,10 @@ public class ByteStream {
     public static void outputStream() throws IOException {
         OutputStream output = null;
         try {
-            output = new FileOutputStream(Constant.FILENAME,true);//appends to file
+            output = new FileOutputStream(Constant.FILENAME, true);//appends to file
 //            while (hasMoreData()) {
 //                int data = getMoreData();
-                output.write("".getBytes());
+            output.write("".getBytes());
             output.flush();
 //            }
         } finally {
@@ -84,5 +115,51 @@ public class ByteStream {
             }
 
         }
+    }
+
+    //字节数组与过滤器的输入输出流 ByteArrayInputStream，ByteArrayOutputStream，FilterInputStream，FilterOutputStream。
+    public static void ByteArryFilter() throws FileNotFoundException {
+        byte[] bytes ="".getBytes(); //get byte array from somewhere.
+        InputStream input = new ByteArrayInputStream(bytes);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        output.write(bytes,0,bytes.length);
+        //write data to output stream
+        bytes = output.toByteArray();
+
+        //FilterInputStream是实现自定义过滤输入流的基类，基本上它仅仅只是覆盖了InputStream中的所有方法。
+        //就我自己而言，我没发现这个类明显的用途。除了构造函数取一个InputStream变量作为参数之外，我没看到FilterInputStream任何对InputStream新增或者修改的地方。如果你选择继承FilterInputStream实现自定义的类，同样也可以直接继承自InputStream从而避免额外的类层级结构。
+        //FilterInputStream filterInputStream = new FilterInputStream(new FileInputStream(Constant.FILENAME));
+    }
+
+    //Buffered和data的输入输出流，BufferedInputStream，BufferedOutputStream，DataInputStream，DataOutputStream
+    public static void BufferedData() throws IOException {
+        //可以为流提供缓冲区
+        //你可以给BufferedInputStream的构造函数传递一个值，设置内部使用的缓冲区设置大小(译者注：默认缓冲区大小8 * 1024B)
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(Constant.FILENAME), 8 * 1024);
+
+        //DataInputStream可以使你从输入流中读取Java基本类型数据，而不必每次读取字节数据。你可以把InputStream包装到DataInputStream中，然后就可以从此输入流中读取基本类型数据了
+        DataInputStream input = new DataInputStream(new FileInputStream("binary.data"));
+        int aByte = input.read();
+        int anInt = input.readInt();
+        float aFloat = input.readFloat();
+        double aDouble = input.readDouble();//etc.
+        input.close();
+
+        //可以往输出流中写入Java基本类型数据
+        DataOutputStream output = new DataOutputStream(new FileOutputStream("binary.data"));
+        output.write(45);
+        //byte data output.writeInt(4545);
+        //int data output.writeDouble(109.123);
+        //double data  output.close();
+    }
+
+    //ObjectOutputStream能够让你把对象写入到输出流中，而不需要每次写入一个字节。
+    // 你可以把OutputStream包装到ObjectOutputStream中，然后就可以把对象写入到该输出流中了。
+    //在你序列化和反序列化一个对象之前，该对象的类必须实现了java.io.Serializable接口。
+    public static void ObjectStream() throws IOException {
+        ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(Constant.FILENAME));
+        output.writeObject(new Constant()); //etc.
+        output.close();
     }
 }

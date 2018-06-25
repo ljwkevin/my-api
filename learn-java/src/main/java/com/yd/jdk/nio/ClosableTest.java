@@ -1,5 +1,7 @@
 package com.yd.jdk.nio;
 
+import com.yd.jdk.Constant;
+
 import java.io.*;
 
 /**
@@ -20,7 +22,7 @@ public class ClosableTest {
     public static void main(String[] args) throws Exception {
         try (
                 BufferedReader reader = new BufferedReader(new InputStreamReader(
-                        new FileInputStream(new File(System.getProperty("user.dir") + "/Serialize.dat")), "UTF8"), 1024)
+                        new FileInputStream(new File(Constant.FILENAME)), "UTF8"), 1024)
         ) {
             System.out.println(reader.readLine());    //这里直接读一行
             //无需调用 reader.close();
@@ -29,7 +31,7 @@ public class ClosableTest {
         }
 
 //        try(Closeable variable1,2,3){}catch (Exception e){} //调用格式
-        try(MyAutoClosable myAutoClosable = new MyAutoClosable()){
+        try (MyAutoClosable myAutoClosable = new MyAutoClosable()) {
             myAutoClosable.doIt();
         }
     }

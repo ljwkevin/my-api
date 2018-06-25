@@ -24,17 +24,17 @@ public class SystemTest {
 //        System.in(new FileInputStream(new File(Constant.FILENAME)));
     }
 
-    public static void out() throws FileNotFoundException {
+    public static void out() throws IOException {
         OutputStream output = new FileOutputStream(Constant.USR_DIR + "／system.out.txt");
 
         PrintStream printOut = new PrintStream(output);
-
+        output.write("abc".getBytes());
         System.setOut(printOut);
         System.out.println("hello-world!!!");
         System.out.flush();
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         out();
     }
 }
