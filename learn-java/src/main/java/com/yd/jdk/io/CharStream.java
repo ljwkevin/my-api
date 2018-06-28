@@ -3,6 +3,7 @@ package com.yd.jdk.io;
 import com.yd.jdk.Constant;
 
 import java.io.*;
+import java.util.Locale;
 
 /**
  * Reader和Writer除了基于字符之外，其他方面都与InputStream和OutputStream非常类似。他们被用于读写文本。
@@ -90,10 +91,84 @@ public class CharStream {
         PipedWriter pipedWriter = new PipedWriter();
         Reader reader = new PipedReader(pipedWriter);
         int data = reader.read();
-        while(data != -1) {
+        while (data != -1) {
             //do something with data...
             data = reader.read();
         }
         reader.close();
+
+        char[] chars = "my name is Yd".toCharArray(); //get char array from somewhere.
+        CharArrayReader charArrayReader = new CharArrayReader(chars);
+        int read = charArrayReader.read();
+        while (read != -1) {
+            //do something with data
+            data = charArrayReader.read();
+            System.out.println(data);
+        }
+        charArrayReader.close();
+    }
+
+    //PushbackInputStream，SequenceInputStream和PrintStream。
+    public static void otherCharStream() throws IOException {
+        PushbackInputStream input = new PushbackInputStream(new FileInputStream(Constant.TEMP));
+        int data = input.read();
+        System.out.println((char) data);//此时流往后读流
+        //把读取到的字节重新推回到InputStream中，以便再次通过read()读取。
+        input.unread(data);//但此时将data重新设置回去
+        System.out.println((char) data + "-->" + (char) input.read());
+        input = new PushbackInputStream(new FileInputStream(Constant.TEMP), 8);//设置推回缓冲区的大小
+
+        //当读取SequenceInputStream时，会先从第一个输入流中读取，完成之后再从第二个输入流读取，以此推类。
+        //read()方法会在读取到当前流末尾时，关闭流，并把当前流指向逻辑链中的下一个流，最后返回新的当前流的read()值
+        InputStream input1 = new FileInputStream(Constant.FILENAME);
+        InputStream input2 = new FileInputStream(Constant.TEMP);
+        InputStream combined = new SequenceInputStream(input1, input2);
+        System.out.println((char) combined.read());
+
+        PrintStream output = new PrintStream(new FileOutputStream(Constant.TEMP));
+        output.print(true);
+        output.print((int) 123);
+        output.print((float) 123.456);
+        output.println();//换行
+        output.printf("Text + data: %s", 123);//格式化输出
+        output.close();
+
+
+        //默认情况下，行号从0开始，当LineNumberReader读取到行终止符时，行号会递增(译者注：换行\n，回车\r，或者换行回车\n\r都是行终止符)。
+        //LineNumberReader是记录了已读取数据行号的BufferedReader
+        LineNumberReader reader = new LineNumberReader(new FileReader(Constant.TEMP));
+        data = reader.read();
+        while (data != -1) {
+            char dataChar = (char) data;
+            System.out.print(dataChar);
+            data = reader.read();
+            int lineNumber = reader.getLineNumber();//获取当前行号
+//            System.out.println("lineNumber"+lineNumber);
+            //setLineNumber()仅仅改变LineNumberReader内的记录行号的变量值，不会改变当前流的读取位置。
+        }
+    }
+
+    //StreamTokenizer(译者注：请注意不是StringTokenizer)可以把输入流(译者注：InputStream和Reader。
+    // 通过InputStream构造StreamTokenizer的构造函数
+    //通过循环调用nextToken()可以遍历底层输入流的所有符号。在每次调用nextToken()之后，StreamTokenizer有一些变量可以帮助我们获取读取到的符号的类型和值。
+    public static void StreamTokenizer() throws IOException {
+        StreamTokenizer tokenizer = new StreamTokenizer(new StringReader("Mary had 1 little lamb..."));
+        while (tokenizer.nextToken() != StreamTokenizer.TT_EOF) {//TT_EOF表示流末尾，TT_EOL表示行末尾。
+            if (tokenizer.ttype == StreamTokenizer.TT_WORD) {
+                System.out.println(tokenizer.sval + "-->" + tokenizer);
+            } else if (tokenizer.ttype == StreamTokenizer.TT_NUMBER) {
+                System.out.println(tokenizer.nval);
+            } else if (tokenizer.ttype == StreamTokenizer.TT_EOL) {
+                System.out.println();
+            }
+            //ttype 读取到的符号的类型(字符，数字，或者行结尾符)
+            //sval 如果读取到的符号是字符串类型，该变量的值就是读取到的字符串的值
+            //nval 如果读取到的符号是数字类型，该变量的值就是读取到的数字的值
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        otherCharStream();
+        StreamTokenizer();
     }
 }
