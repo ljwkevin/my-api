@@ -12,6 +12,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.AbstractResource;
 import org.springframework.core.io.ContextResource;
 import org.springframework.core.io.Resource;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
  * @author Yd on  2018-05-31

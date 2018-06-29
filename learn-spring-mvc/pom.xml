@@ -87,6 +87,7 @@
             <artifactId>learn-jpa-activiti</artifactId>
             <version>1.0.0</version>
         </dependency>
+
     </dependencies>
 
 </project>

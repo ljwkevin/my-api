@@ -30,8 +30,17 @@ public class JedisSimpleTest {
     @Test
     public void testSet() {  
         jedis.set("blog", "java2000_wl");  
-    }  
-      
+    }
+
+    @Test
+    public void testSetId() {
+        jedis.set("id", "0");
+    }
+    @Test
+    public void testGetId() {
+        System.out.println(jedis.incr("id"));
+    }
+
     /** 
      *  获取 
      * <br>------------------------------<br> 

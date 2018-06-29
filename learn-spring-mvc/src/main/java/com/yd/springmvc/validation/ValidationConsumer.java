@@ -1,6 +1,5 @@
-package com.yd.dubbo.validation;
+package com.yd.springmvc.validation;
 
-import com.alibaba.dubbo.rpc.RpcException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.validation.ConstraintViolation;
@@ -18,7 +17,7 @@ public class ValidationConsumer {
             ValidationParameter parameter = new ValidationParameter();
             validationService.save(parameter);
             System.out.println("Validation ERROR");
-        } catch (RpcException e) { // 抛出的是RpcException
+        } catch (Exception e) { // 抛出的是RpcException
             ConstraintViolationException ve = (ConstraintViolationException) e.getCause(); // 里面嵌了一个ConstraintViolationException
             Set<ConstraintViolation<?>> violations = ve.getConstraintViolations(); // 可以拿到一个验证错误详细信息的集合
             System.out.println(violations);

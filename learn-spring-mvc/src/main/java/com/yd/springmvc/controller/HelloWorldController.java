@@ -1,11 +1,14 @@
 package com.yd.springmvc.controller;
 
 import com.yd.entity.User;
+import com.yd.springmvc.validation.ValidationParameter;
+import com.yd.springmvc.validation.ValidationService;
 import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -29,6 +32,12 @@ public class HelloWorldController {
         System.out.println("\n----user:" + user);
         user.setId(RandomUtils.nextInt(1, 100));
         return user;
+    }
+
+    @RequestMapping(value = "/validate", method = {RequestMethod.POST})
+    @ResponseBody
+    public void validate(@Validated(ValidationService.Save.class) @RequestBody ValidationParameter parameter) {
+        System.out.println("\n----user:" + parameter);
     }
 
 }

@@ -5,7 +5,9 @@ import com.yd.entity.User;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 /**
  * @author Yd on  2018-05-07
@@ -20,6 +22,7 @@ public class TestGenericParamType {
         Arrays.stream(type.getActualTypeArguments()).forEach(type1 -> {
             System.out.println(type1+"--"+type1.getClass()+"--"+type1.getTypeName());
         });
+
     }
 
 }

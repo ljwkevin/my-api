@@ -1,4 +1,4 @@
-package com.yd.dubbo.validation;
+package com.yd.springmvc.validation;
 
 import lombok.Data;
 
