@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class HelloWorldController {
 
     @RequestMapping(value = "/validate", method = {RequestMethod.POST})
     @ResponseBody
-    public void validate(@Validated(ValidationService.Save.class) @RequestBody ValidationParameter parameter) {
+    public void validate(@Validated(ValidationService.Save.class) @RequestBody ValidationParameter parameter, BindingResult result) {
         System.out.println("\n----user:" + parameter);
     }
 
