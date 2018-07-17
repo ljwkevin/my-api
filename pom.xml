@@ -11,6 +11,7 @@
         <module>api-common</module>
         <module>api-gateway</module>
         <module>api-mq</module>
+        <module>api-poi</module>
         <module>operate-log</module>
         <module>spring-security</module>
         <module>learn-java</module>
@@ -20,7 +21,6 @@
         <module>learn-akka</module>
         <!--todo -->
         <module>learn-apache-camel</module>
-        <module>learn-webservice</module>
         <module>learn-flowable</module>
         <module>learn-spring</module>
         <module>learn-spring-mvc-noxml</module>
