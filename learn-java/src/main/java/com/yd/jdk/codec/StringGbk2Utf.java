@@ -1,4 +1,4 @@
-package com.yd.jdk.endecode;
+package com.yd.jdk.codec;
 
 import java.io.UnsupportedEncodingException;
 
