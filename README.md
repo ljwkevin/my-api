@@ -1,33 +1,68 @@
-## my-api 
-这是个人集合一些学习的仓库
+## api-common
 
-##api-mq 
-主要存放关于MQ的使用，目前只有amq
+这里存放通用api操作，其中攘括了通用Util，如二位码生成、中文转拼音、spring-bean方式格式化输出；除了Util外，tfidf为 中文分词 个人实现，可以说仿照Lucense 思想实现，可能在性能上有所欠缺；dbAccess 是自己 采用ETL 方式进行不同数据库DB 进行表迁移操作，目前支持Oracle Mysql 之间相迁移；httpClient 是个人基于HttpURLConnection 实现http 请求；Json  主要仿照 开源JSON。当然common也会存放一些其他模块使用的JavaBean、annotation等；
 
-##api-common 
-主要存放通用类，如http-client、dbaccess(待完善)、一些其他模块测试的entity、lucence、一些工具类（如针对返回结果做格式化FormatterUtil）
+## api-gateway
 
-##api-gateway 
-基于spring + servlet 框架，模拟网关通信（原型有点粗糙）
+这功能貌似比较新颖，采用servlet+spring 方式进行 将 Spring-Bean 进行Http 请求方法级别，只是Htpp版的RPC;
 
-##learn-akka 
-这是个人学习akka 
+## api-mq
 
-##learn-concurrency 
-这是个人学习java-concurrency programming 
+各种Mq api 整合操作
 
-##learn-feign 
-feign 远程调用 
+## api-poi
 
-##learn-jpa-activiti 
-整合hibernate-jpa + activiti  
+报表操作
 
-##learn-spring-mvc 
-单纯的一个web框架，可以依赖其他模块（如learn-jpa-activiti）就能够成一个服务 
+## learn-akka
 
-##operate-log 
-操作日志 模块开发 （主要跟踪一个实体的前后数据变化，有点像MySQL-binlog） 待完善 
+高性能 akka框架自我学习
 
-##spring-security 
-spring-security 安全认证 （初级demo） 
+## learn-apache-camel
+
+apache-camel 各种流转自我学习
+
+## learn-dubbo
+
+spring 版 dubbo自我学习配置，主要参考dubbo官网来操作
+
+## learn-feign
+
+feign各种操作
+
+## learn-flowable
+
+开源工作流框架flowable学习
+
+## learn-groovy
+
+在Java中使用groovy脚本
+
+## learn-java
+
+这里学习的东西可多了，比如java版算法、并发编程 书学习、加密与解密、java8新特性、javaWeb、及jdk源码学习位运算、集合、泛化、instrument（统计与计算）、io、net 网络编程、nio、proxy、reflect等操作；
+
+## learn-jpa-activiti
+
+基于spring+actitviti+jpa 开发
+
+## learn-spring
+
+用于学习Spring IOC AOP学习
+
+## learn-spring-mvc
+
+spring-mvc demo
+
+## learn-spring-mvc-noxml
+
+基于Servlet 3.0 无xml 配置版 spring mvc
+
+## operate-log
+
+尝试做个操作日志模块
+
+## spring-security
+
+spring-security 权限系统 demo
 
