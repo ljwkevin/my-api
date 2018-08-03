@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workbook>
+    <worksheet idx="0">
+        <section startRow="0" endRow="1"/>            
+        <loop startRow="2" endRow="2" items="datas" var="data" varType="java.util.HashMap">
+            <section startRow="2" endRow="2">
+                <mapping row="2" col="0">data.number</mapping>
+                <mapping row="2" col="1">data.tableNum</mapping>
+                <mapping row="2" col="2">data.code</mapping>
+                <mapping row="2" col="3" type="java.util.Date">data.dealDate</mapping>
+				<mapping row="2" col="4">data.price</mapping>
+				<mapping row="2" col="5">data.payMode</mapping>
+            </section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0"></cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+        </loop>
+    </worksheet>
+</workbook>
+
