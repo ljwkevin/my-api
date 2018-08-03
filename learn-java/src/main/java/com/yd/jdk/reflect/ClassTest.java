@@ -16,6 +16,7 @@ public class ClassTest {
     public static void main(String[] args) throws ClassNotFoundException {
         String className = ClassTest.class.getName();
         Class clazz = Class.forName(className);
+        clazz.getProtectionDomain().getCodeSource().getLocation();
         //访问一个类的修饰符
         int modifiers = clazz.getModifiers();
         System.out.println(Modifier.isPublic(modifiers));
