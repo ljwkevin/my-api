@@ -1,4 +1,4 @@
-package com.yd.inteview.ssj;
+package com.yd.interview.ssj;
 /**
  * 随手记笔试题 电商秒杀、蜜蜂采蜜
  有三只蜜蜂、一朵花，蜜蜂只有在花开的时候起来采蜜，花落时回被窝，然后请设计程序，打印出如下：

@@ -1,4 +1,4 @@
-package com.yd.inteview.alibaba;
+package com.yd.interview.alibaba;
 /**
     阿里机试题：hr与面试官处理简历、使用jdk设计带有失效时间的本地缓存
     1、hr与面试官处理简历
